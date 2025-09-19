@@ -31,3 +31,8 @@ sudo systemctl stop telegram-mirror
 
 # disable auto-run on boot
 sudo systemctl disable telegram-mirror
+
+# kill process after ^Z
+ps aux | grep main.py
+kill -9 #<PID>
+rm -f mirror_session.session-journal mirror_session.session-shm mirror_session.session-wal

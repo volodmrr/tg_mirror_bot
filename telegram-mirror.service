@@ -3,13 +3,15 @@ Description=Telegram Mirror Service
 After=network.target
 
 [Service]
-Type=simple
 User=root
 WorkingDirectory=/root/tg_mirror_bot
 EnvironmentFile=/root/tg_mirror_bot/.env
-ExecStart=/root/tg_mirror_bot/venv/bin/python /root/tg_mirror_bot/main.py
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/root/tg_mirror_bot/venv/bin/python -u /root/tg_mirror_bot/main.py
 Restart=always
-RestartSec=300
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
