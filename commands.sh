@@ -6,14 +6,6 @@ cd tg_mirror_bot
 cp .env.example .env
 nano .env
 
-# set env
-set -e
-
-APP_NAME="telegram-mirror"
-APP_DIR=$(pwd)    
-USER_NAME=$(whoami) 
-SERVICE_FILE="/etc/systemd/system/$APP_NAME.service"
-
 # setup project
 apt install python3.12-venv
 ./venv/bin/pip install --upgrade pip
@@ -22,26 +14,25 @@ python3 -m venv venv
 
 
 # create service file
-sudo touch $SERVICE_FILE
-sudo nano /etc/systemd/system/$APP_NAME.service
+sudo touch /etc/systemd/system/telegram-mirror.service
+sudo nano /etc/systemd/system/telegram-mirror.service
 
 # create session
 ./venv/bin/python3 main.py
 
 # start service
 sudo systemctl daemon-reload
-sudo systemctl enable $APP_NAME
-sudo systemctl restart $APP_NAME
-
+sudo systemctl enable telegram-mirror
+sudo systemctl restart telegram-mirror
 
 # check status
-sudo systemctl status $APP_NAME
+sudo systemctl status telegram-mirror
 
 # check logs
-journalctl -u $APP_NAME -f
+journalctl -u telegram-mirror -f
 
 # stop service 
-sudo systemctl stop $APP_NAME
+sudo systemctl stop telegram-mirror
 
 # disable auto-run on boot
-sudo systemctl disable $APP_NAME
+sudo systemctl disable telegram-mirror

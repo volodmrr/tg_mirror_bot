@@ -4,10 +4,10 @@ After=network.target
 
 [Service]
 Type=simple
-User=$USER_NAME
-WorkingDirectory=$APP_DIR
-EnvironmentFile=$APP_DIR/.env
-ExecStart=$APP_DIR/venv/bin/python3 $APP_DIR/main.py
+User=root
+WorkingDirectory=/root/tg_mirror_bot
+EnvironmentFile=/root/tg_mirror_bot/.env
+ExecStart=/root/tg_mirror_bot/venv/bin/python /root/tg_mirror_bot/main.py
 Restart=always
 RestartSec=5
 
