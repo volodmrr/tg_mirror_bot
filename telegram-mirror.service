@@ -9,7 +9,7 @@ WorkingDirectory=/root/tg_mirror_bot
 EnvironmentFile=/root/tg_mirror_bot/.env
 ExecStart=/root/tg_mirror_bot/venv/bin/python /root/tg_mirror_bot/main.py
 Restart=always
-RestartSec=60
+RestartSec=300
 
 [Install]
 WantedBy=multi-user.target
