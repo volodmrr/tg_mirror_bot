@@ -1,19 +1,19 @@
 from telethon import TelegramClient, events
 import asyncio
-from logger import logger
-import config
+from .logger import logger
+from .config import API_ID, API_HASH, SOURCE_CHANNELS, TARGET_CHANNEL
 from album_utils import flush_album, album_buffer
 
 
-client = TelegramClient("mirror_session", config.API_ID, config.API_HASH)
+client = TelegramClient("mirror_session", API_ID, API_HASH)
 
 async def main():
     logger.info("Connecting...")
     await client.start(code_callback=lambda: input("Enter the login code you received: "))
     logger.info("Connected")
 
-    sources = config.SOURCE_CHANNELS
-    target = await client.get_entity(config.TARGET_CHANNEL)
+    sources = SOURCE_CHANNELS
+    target = await client.get_entity(TARGET_CHANNEL)
 
     logger.info(f"Listening for new messages in sources: {sources}")
 
