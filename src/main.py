@@ -2,7 +2,7 @@ from telethon import TelegramClient, events
 import asyncio
 from .logger import logger
 from .config import API_ID, API_HASH, SOURCE_CHANNELS, TARGET_CHANNEL
-from album_utils import flush_album, album_buffer
+from .album_utils import flush_album, album_buffer
 
 
 client = TelegramClient("mirror_session", API_ID, API_HASH)
