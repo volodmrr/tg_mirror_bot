@@ -5,12 +5,6 @@ APP_NAME="telegram-mirror"
 APP_DIR=$(pwd)     # use current repo directory
 USER_NAME=$(whoami) # run as current user
 
-echo ">>> Updating system..."
-sudo apt update && sudo apt upgrade -y
-
-echo ">>> Installing basics..."
-sudo apt install -y python3 python3-venv python3-pip git curl nano
-
 echo ">>> Setting up virtualenv..."
 python3 -m venv venv
 ./venv/bin/pip install --upgrade pip
