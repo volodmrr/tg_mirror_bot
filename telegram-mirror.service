@@ -7,9 +7,9 @@ User=root
 WorkingDirectory=/root/tg_mirror_bot
 EnvironmentFile=/root/tg_mirror_bot/.env
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/root/tg_mirror_bot/venv/bin/python -u /root/tg_mirror_bot/src/main.py
+ExecStart=/root/tg_mirror_bot/venv/bin/python -m src
 Restart=always
-RestartSec=5
+RestartSec=300
 StandardOutput=journal
 StandardError=journal
 

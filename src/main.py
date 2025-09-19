@@ -1,7 +1,7 @@
 from telethon import TelegramClient, events
 import asyncio
 from logger import logger
-from config import config
+import config
 from album_utils import flush_album, album_buffer
 
 
@@ -57,7 +57,3 @@ async def main():
             logger.exception(error_text)
 
     await client.run_until_disconnected()
-
-if __name__ == "__main__":
-    with client:
-        client.loop.run_until_complete(main())
