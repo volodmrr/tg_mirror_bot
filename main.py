@@ -7,8 +7,6 @@ load_dotenv()
 
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
-PHONE = os.getenv("PHONE")
-PASSWORD = os.getenv("PASSWORD", "")
 
 SOURCE_CHANNELS = [s.strip() for s in os.getenv("SOURCE_CHANNELS", "").split(",") if s.strip()]
 TARGET_CHANNEL = int(os.getenv("TARGET_CHANNEL"))
@@ -33,8 +31,6 @@ def parse_source(raw: str):
 async def main():
     print("Connecting...")
     await client.start(
-        phone=lambda: PHONE,
-        password=lambda: PASSWORD if PASSWORD else None,
         code_callback=lambda: input("Enter the login code you received: "),
     )
     print("Connected!")
