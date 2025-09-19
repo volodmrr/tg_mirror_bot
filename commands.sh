@@ -12,7 +12,6 @@ apt install python3.12-venv
 python3 -m venv venv
 ./venv/bin/pip install -r requirements.txt
 
-
 # create service file
 sudo touch /etc/systemd/system/telegram-mirror.service
 sudo nano /etc/systemd/system/telegram-mirror.service
@@ -24,11 +23,7 @@ sudo nano /etc/systemd/system/telegram-mirror.service
 sudo systemctl daemon-reload
 sudo systemctl enable telegram-mirror
 sudo systemctl restart telegram-mirror
-
-# check status
 sudo systemctl status telegram-mirror
-
-# check logs
 journalctl -u telegram-mirror -f
 
 # stop service 
