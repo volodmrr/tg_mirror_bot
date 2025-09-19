@@ -17,7 +17,7 @@ sudo touch /etc/systemd/system/telegram-mirror.service
 sudo nano /etc/systemd/system/telegram-mirror.service
 
 # create session
-./venv/bin/python3 main.py
+./venv/bin/python3 src/main.py
 
 # start service
 sudo systemctl daemon-reload
