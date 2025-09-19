@@ -1,3 +1,6 @@
+# clone
+git clone https://github.com/volodmrr/tg_mirror_bot.git
+cd tg_mirror_bot
 
 # create .env
 cp .env.example .env
@@ -12,14 +15,18 @@ USER_NAME=$(whoami)
 SERVICE_FILE="/etc/systemd/system/$APP_NAME.service"
 
 # setup project
-python3 -m venv venv
+apt install python3.12-venv
 ./venv/bin/pip install --upgrade pip
+python3 -m venv venv
 ./venv/bin/pip install -r requirements.txt
 
 
 # create service file
 sudo touch $SERVICE_FILE
 sudo nano /etc/systemd/system/$APP_NAME.service
+
+# create session
+./venv/bin/python3 main.py
 
 # start service
 sudo systemctl daemon-reload

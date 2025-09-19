@@ -12,8 +12,16 @@ PASSWORD = os.getenv("PASSWORD", "")
 SOURCE_CHANNEL = os.getenv("SOURCE_CHANNEL")
 TARGET_CHANNEL = os.getenv("TARGET_CHANNEL")
 
+
 client = TelegramClient("mirror_session", API_ID, API_HASH)
 album_buffer = {}
+
+def resolve_entity(value: str | int):
+    if isinstance(value, str):
+        if value.lstrip("-").isdigit():
+            return int(value)
+        return value.strip()
+    return value
 
 async def main():
     print("Connecting...")
@@ -24,8 +32,8 @@ async def main():
     )
     print("Connected!")
 
-    source = await client.get_entity(SOURCE_CHANNEL)
-    target = await client.get_entity(TARGET_CHANNEL)
+    source = await client.get_entity(resolve_entity(SOURCE_CHANNEL))
+    target = await client.get_entity(resolve_entity(TARGET_CHANNEL))
 
     print("Listening for new messages in source channel...")
 
