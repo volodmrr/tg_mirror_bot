@@ -1,6 +1,6 @@
 from telethon import TelegramClient, events
 import asyncio
-from logging import logger
+from logger import logger
 from config import config
 from album_utils import flush_album, album_buffer
 

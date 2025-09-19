@@ -1,5 +1,5 @@
 from telethon import TelegramClient
-from logging import logger
+from logger import logger
 
 album_buffer = {}
 
